@@ -21,8 +21,8 @@ class PermissionController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-            $content->header(trans('admin::lang.permissions'));
-            $content->description(trans('admin::lang.list'));
+            $content->header(trans('lang.system'));
+            $content->description(trans('admin::lang.permissions'));
             $content->body($this->grid()->render());
         });
     }

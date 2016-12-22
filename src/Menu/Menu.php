@@ -87,12 +87,29 @@ class Menu implements Renderable
                 _order: JSON.stringify(serialize)
             },
             function(data){
-                $.pjax.reload('#pjax-container');
+                location.reload();
+                //$.pjax.reload('#pjax-container');
             });
         });
 
         $('.{$this->elementId}-refresh').click(function () {
-            $.pjax.reload('#pjax-container');
+            noty({
+                text: "<strong>刷新成功</strong><br/>",
+                type:'success',
+                timeout: 2000,
+                callback: {
+                    onShow: function() {},
+                    afterShow: function() {},
+                    onClose: function() {},
+                    afterClose: function() {
+                        location.reload();
+                    },
+                    onCloseClick: function() {
+                        location.reload();
+                    },
+                },
+            });
+            //$.pjax.reload('#pjax-container');
         });
 
 

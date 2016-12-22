@@ -30,11 +30,15 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
-        $credentials = $request->only(['username', 'password']);
+        $credentials = $request->only(['username', 'password', 'captcha']);
 
         $validator = Validator::make($credentials, [
-            'username' => 'required', 'password' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'captcha' => 'required|captcha',
         ]);
+
+        unset($credentials['captcha']);
 
         if ($validator->fails()) {
             return Redirect::back()->withInput()->withErrors($validator);

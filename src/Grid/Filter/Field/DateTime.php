@@ -11,16 +11,19 @@ class DateTime
      */
     protected $filter;
 
-    public function __construct($filter)
+    protected $format;
+
+    public function __construct($filter, $format = 'YYYY-MM-DD HH:mm:ss')
     {
         $this->filter = $filter;
+        $this->format = $format;
 
         $this->prepare();
     }
 
     public function prepare()
     {
-        $options['format'] = 'YYYY-MM-DD HH:mm:ss';
+        $options['format'] = $this->format ? : 'YYYY-MM-DD HH:mm:ss';
         $options['locale'] = config('app.locale');
 
         $script = "$('#{$this->filter->getId()}').datetimepicker(".json_encode($options).');';

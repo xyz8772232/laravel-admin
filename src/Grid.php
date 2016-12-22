@@ -894,23 +894,45 @@ $('.batch-delete').on('click', function() {
 
     if(confirm("{$confirm}")) {
         $.post('/{$path}/' + selected.join(), {_method:'delete','_token':'{$token}'}, function(data){
-            $.pjax.reload('#pjax-container');
+            //$.pjax.reload('#pjax-container');
             noty({
                 text: "<strong>Succeeded!</strong>",
                 type:'success',
-                timeout: 1000
+                timeout: 1000,
+                callback: {
+                    onShow: function() {},
+                    afterShow: function() {},
+                    onClose: function() {},
+                    afterClose: function() {
+                        location.reload();
+                    },
+                    onCloseClick: function() {
+                        location.reload();
+                    },
+                },
             });
         });
     }
 });
 
 $('.grid-refresh').on('click', function() {
-    $.pjax.reload('#pjax-container');
+    //$.pjax.reload('#pjax-container');
 
     noty({
         text: "<strong>Succeeded!</strong>",
         type:'success',
-        timeout: 1000
+        timeout: 1000,
+        callback: {
+                    onShow: function() {},
+                    afterShow: function() {},
+                    onClose: function() {},
+                    afterClose: function() {
+                        location.reload();
+                    },
+                    onCloseClick: function() {
+                        location.reload();
+                    },
+                },
     });
 });
 
@@ -921,10 +943,21 @@ var grid_order = function(id, direction) {
             noty({
                 text: "<strong>Succeeded!</strong>",
                 type:'success',
-                timeout: 1000
+                timeout: 1000,
+                callback: {
+                    onShow: function() {},
+                    afterShow: function() {},
+                    onClose: function() {},
+                    afterClose: function() {
+                        location.reload();
+                    },
+                    onCloseClick: function() {
+                        location.reload();
+                    },
+                },
             });
 
-            $.pjax.reload('#pjax-container');
+            //$.pjax.reload('#pjax-container');
         }
     });
 }
@@ -938,7 +971,8 @@ $('.grid-order-down').on('click', function() {
 });
 
 $('.per-page').select2({minimumResultsForSearch: -1}).on("select2:select", function(e) {
-    $.pjax({url: this.value, container: '#pjax-container'});
+    location.href = this.value;
+    //$.pjax({url: this.value, container: '#pjax-container'});
 });
 
 EOT;

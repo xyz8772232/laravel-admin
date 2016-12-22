@@ -267,11 +267,16 @@ class Builder
                 var id = $(this).data('id');
                 if(confirm('{$confirm}')) {
                     $.post('{$this->form->resource($slice)}/' + id, {_method:'delete','_token':'{$token}'}, function(data){
-                        $.pjax({
-                            timeout: 2000,
-                            url: '$location',
-                            container: '#pjax-container'
-                          });
+//                        $.pjax({
+//                            timeout: 2000,
+//                            url: '$location',
+//                            container: '#pjax-container'
+//                          });
+                        noty({
+                text: "<strong>删除成功</strong><br/>",
+                type:'success',
+                timeout: 5000
+            });
                         return false;
                     });
                 }

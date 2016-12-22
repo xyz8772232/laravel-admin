@@ -94,18 +94,40 @@ $('._delete').click(function() {
                     noty({
                         text: "<strong>Succeeded!</strong><br/>"+data.message,
                         type:'success',
-                        timeout: 3000
+                        timeout: 2000,
+                        callback: {
+                    onShow: function() {},
+                    afterShow: function() {},
+                    onClose: function() {},
+                    afterClose: function() {
+                        location.reload();
+                    },
+                    onCloseClick: function() {
+                        location.reload();
+                    },
+                },
                     });
                 } else {
                     noty({
                         text: "<strong>Failed!</strong><br/>"+data.message,
                         type:'error',
-                        timeout: 3000
+                        timeout: 2000,
+                        callback: {
+                    onShow: function() {},
+                    afterShow: function() {},
+                    onClose: function() {},
+                    afterClose: function() {
+                        location.reload();
+                    },
+                    onCloseClick: function() {
+                        location.reload();
+                    },
+                },
                     });
                 }
             }
-
-            $.pjax.reload('#pjax-container');
+            //location.reload();
+            //$.pjax.reload('#pjax-container');
         });
     }
 });

@@ -152,10 +152,11 @@ abstract class AbstractFilter
 
     /**
      * Datetime filter.
+     * @param string $format
      */
-    public function datetime()
+    public function datetime($format = 'YYYY-MM-DD HH:mm:ss')
     {
-        $this->setField(new DateTime($this));
+        $this->setField(new DateTime($this, $format));
     }
 
     /**

@@ -308,7 +308,7 @@ class Form
 
         $this->complete($this->saved);
 
-        return redirect($this->resource(0));
+        return redirect($this->resource(0))->withSuccess(trans('admin::lang.succeeded'));
     }
 
     /**
@@ -845,7 +845,7 @@ class Form
             'display'           => \Encore\Admin\Form\Field\Display::class,
             'divider'           => \Encore\Admin\Form\Field\Divide::class,
             'divide'            => \Encore\Admin\Form\Field\Divide::class,
-            'editor'            => \Encore\Admin\Form\Field\Editor::class,
+            //'editor'            => \Encore\Admin\Form\Field\Editor::class,
             'email'             => \Encore\Admin\Form\Field\Email::class,
             'embedsMany'        => \Encore\Admin\Form\Field\EmbedsMany::class,
             'file'              => \Encore\Admin\Form\Field\File::class,
@@ -855,7 +855,7 @@ class Form
             'image'             => \Encore\Admin\Form\Field\Image::class,
             'ip'                => \Encore\Admin\Form\Field\Ip::class,
             'json'              => \Encore\Admin\Form\Field\Json::class,
-            'map'               => \Encore\Admin\Form\Field\Map::class,
+            //'map'               => \Encore\Admin\Form\Field\Map::class,
             'mobile'            => \Encore\Admin\Form\Field\Mobile::class,
             'month'             => \Encore\Admin\Form\Field\Month::class,
             'multipleSelect'    => \Encore\Admin\Form\Field\MultipleSelect::class,

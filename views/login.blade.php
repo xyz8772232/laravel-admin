@@ -54,6 +54,19 @@
         <input type="password" class="form-control" placeholder="{{ trans('admin::lang.password') }}" name="password" value="{{ old('username') }}">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+
+      <div class="form-group has-feedback {!! !$errors->has('captcha') ?: 'has-error' !!}">
+
+        @if($errors->has('captcha'))
+          @foreach($errors->get('captcha') as $message)
+            <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label></br>
+          @endforeach
+        @endif
+          <input type="input" class="form-control" placeholder="验证码" name="captcha">
+          <img src="{{ captcha_src() }}" alt="验证码" title="刷新图片" width="100" height="32" id="captcha" border="0" data-config="default" style="position: absolute; right: 1px; bottom : 1px"/>
+
+      </div>
+
       <div class="row">
 
         <!-- /.col -->
@@ -83,6 +96,9 @@
       radioClass: 'iradio_square-blue',
       increaseArea: '20%' // optional
     });
+  });
+  $('#captcha').on('click', function() {
+      $(this).attr('src', '/captcha/' + $(this).data('config')+ '/?'+ Math.random());
   });
 </script>
 </body>

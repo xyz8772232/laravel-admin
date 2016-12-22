@@ -22,8 +22,8 @@ class RoleController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-            $content->header(trans('admin::lang.roles'));
-            $content->description(trans('admin::lang.list'));
+            $content->header(trans('lang.system'));
+            $content->description(trans('admin::lang.roles'));
             $content->body($this->grid()->render());
         });
     }

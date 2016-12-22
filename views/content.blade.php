@@ -1,4 +1,4 @@
-@extends('admin::index')
+@extends('layouts.auto')
 
 @section('content')
     <section class="content-header">
