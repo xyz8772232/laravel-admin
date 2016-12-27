@@ -102,17 +102,20 @@ class UserController extends Controller
     public function form()
     {
         return Admin::form(Administrator::class, function (Form $form) {
-            $form->display('id', 'ID');
+            //$form->display('id', 'ID');
 
             $form->text('username', trans('admin::lang.username'))->rules('required');
             $form->text('name', trans('admin::lang.name'))->rules('required');
             $form->password('password', trans('admin::lang.password'))->rules('required');
 
             $form->multipleSelect('roles', trans('admin::lang.roles'))->options(Role::all()->pluck('name', 'id'));
-            $form->multipleSelect('permissions', trans('admin::lang.permissions'))->options(Permission::all()->pluck('name', 'id'));
+            $permissions = Permission::all()->pluck('name', 'id')->all();
+            if ($permissions) {
+                $form->multipleSelect('permissions', trans('admin::lang.permissions'))->options($permissions);
+            }
 
-            $form->display('created_at', trans('admin::lang.created_at'));
-            $form->display('updated_at', trans('admin::lang.updated_at'));
+            //$form->display('created_at', trans('admin::lang.created_at'));
+            //$form->display('updated_at', trans('admin::lang.updated_at'));
 
             $form->saving(function (Form $form) {
                 if ($form->password && $form->model()->password != $form->password) {
